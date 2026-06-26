@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.eggs/
+
+# Local data (clips live on Hugging Face, not in-repo)
+data/
+*.parquet
+
+# OS / editor
+.DS_Store
+.ipynb_checkpoints/

@@ -1,0 +1,8 @@
+# Core harness (Mode A) — CPU-only, no GPU / deep-learning framework required.
+# Equivalent to `pip install .`  (see pyproject.toml for the packaged metadata).
+pandas>=2.0
+numpy>=1.23
+pyarrow>=12.0     # optional: enables/prefers Parquet catalog I/O
+
+# Mode B (rebuild the dataset from raw KABR video) additionally needs:
+#   pip install ".[pipeline]"     # adds opencv-python-headless

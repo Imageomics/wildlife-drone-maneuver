@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this artifact, please cite it using these metadata (and the source datasets)."
+title: "Drone Maneuver Test-Clip Library"
+abstract: "A replayable, labeled testbed for evaluating self-adaptive wildlife-drone flight policies: maneuver-indexed aerial clips with per-frame ground-truth drone actions, plus a deterministic decision-tree replay harness. Bootstrapped from KABR and indexed against the FAIR² Drones standard."
+type: software
+authors:
+  - family-names: Kline
+    given-names: Jenna M.
+    orcid: "https://orcid.org/0009-0006-7301-5774"
+keywords:
+  - imageomics
+  - drone
+  - UAV
+  - ecology
+  - self-adaptive systems
+  - benchmark
+  - KABR
+license: MIT
+repository-code: "https://github.com/Imageomics/wildlife-drone-maneuver"
+url: "https://huggingface.co/datasets/imageomics/drone-maneuver-clips"
+version: 1.2.0
+# doi: <Zenodo DOI — add once minted>
