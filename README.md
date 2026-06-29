@@ -274,10 +274,9 @@ field-meaningful thresholds above stay tunable.
 
 ## Policy scoring (the intended downstream use)
 
-This is what makes the artifact a **benchmark, not a viewer**: a learned navigation policy is scored,
-per maneuver, against the evaluation framework's ground-truth actions. Scoring is available in the
-[demo's "Policy scoring" tab](https://huggingface.co/spaces/imageomics/drone-maneuver-demo); the
-semantics below are exactly what it runs.
+A learned navigation policy is scored, per maneuver, against the evaluation framework's ground-truth actions. 
+Scoring is available in the
+[demo's "Policy scoring" tab](https://huggingface.co/spaces/imageomics/drone-maneuver-demo).
 
 ### Input format
 
@@ -335,7 +334,7 @@ and poorly on range `back`/`forward` distinctions), and the confusion matrix. Sw
 
 The artifact is deterministic and CPU-only.
 
-- **Zero-install:** open the demo's **"Run full benchmark"** accordion. It replays all clips ×
+- **Zero-install:** open the demo's **"Run full benchmark"** option. It replays all clips ×
   tagged maneuvers with the default thresholds and prints the **wall-clock time** and an
   **output SHA-256** (single fingerprint of all the smoothed action labels, so an identical hash confirms a bit-for-bit reproduction) over the smoothed action labels.
 - **Locally:** regenerate every label with the defaults and confirm bit-for-bit equality with the
@@ -352,8 +351,7 @@ The artifact is deterministic and CPU-only.
   printed hash against the one in the demo's benchmark accordion.
 
 > **Determinism guarantee:** with `Params()` defaults, `generate(...)` reproduces the released
-> `maneuver_labels.csv` exactly. Any divergence indicates an environment problem, not a stochastic
-> result — there is no randomness in the evaluation framework.
+> `maneuver_labels.csv` the same each time.
 
 ## Dataset structure
 
@@ -372,7 +370,7 @@ drone-maneuver-clips/                 (Hugging Face dataset, revision v1.1-acsos
 ```
 
 See the **[dataset card](https://huggingface.co/datasets/imageomics/drone-maneuver-clips)** for the
-complete per-column field dictionary (it is the source of truth; not duplicated here).
+complete per-column field dictionary.
 
 ## Repository structure
 
@@ -413,17 +411,16 @@ not in this repository; fetch them with `snapshot_download` (see [Installation](
   far/medium/close are relative to *this survey*, not absolute scale. KABR was flown lower than ideal
   tracking altitude, so TRACK range-control labels skew toward `back`.
 - **Habitat is a structural class** (`open`/`closed`/`mixed`/`unknown`) derived from field metadata;
-  the original free text is preserved in `habitat_notes`. Habitats here are open/savanna —
-  **not** an assumption suited to heavily vegetated or obstacle-dense settings or
-  obstacle-avoidance research.
-- **Retrospective, not field-validated closed-loop.** Labels are KABR expert ground truth replayed
-  through a policy spec — appropriate for ground-truth *evaluation*, not for characterizing
+  the original free text is preserved in `habitat_notes`. The benchmark only contains data from the Mpala
+  Research Centre, which may not generalize to other settings, such as dense forest.
+- **Retrospective closed-loop validation.** Labels are KABR expert ground truth replayed
+  through a policy spec appropriate for ground-truth evaluation. Further work required for characterizing
   perception error or proving in-flight control.
 - **Single-drone, single-view.** Multi-view / multi-agent missions are future work.
 
 ## Extending to new datasets
 
-The benchmark is intentially designed to be additive. Every clip references its source only through FAIR²
+The benchmark dataset is designed to be additive. Every clip references its source only through FAIR²
 event IDs (`fair2_video_eventID`, `fair2_session_eventID`) 
 so a new site or species folds into the same schema without restructuring:
 
@@ -437,11 +434,10 @@ We plan to release extensions to this initial benchmark to include additional sp
 
 ### Mode B — rebuild the dataset from raw drone video
 
-Only needed to regenerate clips from source (the released dataset already contains everything for
-the workflows above). Requires read access to the raw KABR video archive (multi-TB, not
-redistributed here) and the pipeline extra (`pip install ".[pipeline]"`). The raw-data locations are
-**not hard-coded** — point `clip_library/schema.py` at your copy via environment variables (unset
-Mode-B paths default to empty, so the pipeline fails loudly rather than reading a wrong filesystem):
+Only needed to regenerate clips from source (the released dataset contains everything for
+the workflows above). Requires read access to the raw KABR video archive (multi-TB, see KABR HF collection) 
+and the pipeline extra (`pip install ".[pipeline]"`). Point `clip_library/schema.py` at your copy via environment variables (unset
+Mode-B paths default to empty):
 
 ```bash
 export KABR_ROOT=/path/to/kabr-full-release       # occurrences + video/session events
