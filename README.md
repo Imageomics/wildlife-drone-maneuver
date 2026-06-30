@@ -1,4 +1,4 @@
-# Drone Maneuver Test-Clip Library
+# A Maneuver-Indexed Testbed for Context-Aware Adaptive Wildlife Drones
 
 > A replayable, labeled testbed for evaluating self-adaptive wildlife-drone flight policies.
 
@@ -6,6 +6,7 @@
 [![Data: CC-BY-4.0](https://img.shields.io/badge/data%20license-CC--BY--4.0-green.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![HF Dataset](https://img.shields.io/badge/🤗%20dataset-drone--maneuver--clips-yellow)](https://huggingface.co/datasets/imageomics/drone-maneuver-clips)
 [![HF Space](https://img.shields.io/badge/🤗%20demo-drone--maneuver--demo-orange)](https://huggingface.co/spaces/imageomics/drone-maneuver-demo)
+[![YouTube Tutorial](https://img.shields.io/badge/▶%20tutorial-YouTube-red)](https://youtu.be/CaVFkqExMNA)
 <!-- [![DOI](https://zenodo.org/badge/DOI/xx.xxxx/zenodo.xxxxxxx.svg)](https://doi.org/xx.xxxx/zenodo.xxxxxxx) — add once the Zenodo DOI is minted -->
 
 <p align="center">
@@ -85,6 +86,9 @@ without restructuring, allowing the testbed grow across the community's drone da
 > rule each maneuver follows.
 
 ## Quick start
+
+> 📺 **New here?** Watch the [video tutorial](https://youtu.be/CaVFkqExMNA) for a guided walkthrough
+> of the artifact and the interactive demo.
 
 ### Option A — Hugging Face Space (recommended, zero-install)
 
